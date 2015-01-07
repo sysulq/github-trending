@@ -1,0 +1,43 @@
+sophron/wifiphisher: Python, 545 stars today
+      Fast automated phishing attacks against WPA networks
+    
+ecomfe/echarts: JavaScript, 395 stars today
+      Enterprise Charts | Github pages : http://ecomfe.github.io/echarts/index-en.html | Email : echarts@baidu.com | Baidu Hi : 1379172 | 
+    
+amjith/pgcli: Python, 399 stars today
+      Postgres CLI with autocompletion and syntax highlighting
+    
+philipwalton/flexbugs: 397 stars today
+      A list of flexbox issues and cross-browser workarounds for them.
+    
+daniel-lundin/snabbt.js: JavaScript, 336 stars today
+      Fast animations with javascript and CSS transforms
+    
+prakhar1989/awesome-courses: 279 stars today
+      List of awesome university courses for learning Computer Science!
+    
+MaciejCzyzewski/retter: C++, 280 stars today
+      A collection of hash functions, ciphers, tools, libraries, and materials related to cryptography. 
+
+    
+begriffs/postgrest: Haskell, 240 stars today
+      REST API for any Postgres database
+    
+dropbox/godropbox: Go, 231 stars today
+      Common libraries for writing Go services/applications.
+    
+Zhouzi/TheaterJS: JavaScript, 217 stars today
+      Typing effect mimicking human behavior.
+    
+wasabeef/awesome-android-ui: 180 stars today
+      A curated list of awesome Android UI/UX libraries
+    
+lukasz-madon/awesome-remote-job: 109 stars today
+      A curated list of awesome remote jobs and resources. Inspired by https://github.com/vinta/awesome-python
+    
+twitter/AnomalyDetection: R, 109 stars today
+      Anomaly Detection with R
+    
+nlohmann/json: C++, 103 stars today
+      JSON for Modern C++
+    
