@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"os"
@@ -9,22 +10,28 @@ import (
 	"time"
 )
 
-func main() {
-	for {
+var push = flag.Bool("p", false, "push to github")
 
+func main() {
+	flag.Parse()
+
+	for {
 		dateString := dateString()
 		markdown := dateString + ".md"
-		txt := dateString + ".txt"
+		html := dateString + ".html"
 
 		createFile(markdown)
-		createFile(txt)
+		createFile(html)
 
-		mostStarred(markdown, txt, 10)
+		mostStarred(markdown, html, 10)
 
-		//gitPull()
-		gitAddAll()
-		gitCommit(dateString)
-		gitPush()
+		if *push {
+			gitPull()
+			gitAddAll()
+			gitCommit(dateString)
+			gitPush()
+		}
+
 		time.Sleep(time.Duration(24) * time.Hour)
 	}
 }
@@ -123,8 +130,8 @@ func mostStarred(filename string, txt string, topnum int) {
 			panic(err)
 		}
 
-		content := title + ": " + strings.TrimSuffix(strings.Join(info, ", "), ", Built by")
-		content += description + "\n"
+		content := "<b>" + title + "</b>: " + strings.TrimSuffix(strings.Join(info, ", "), ", Built by")
+		content += "<br>" + description + "<br><br>"
 
 		if _, err = t.WriteString(content); err != nil {
 			panic(err)
@@ -189,6 +196,7 @@ func gitCommit(date string) {
 
 	print(string(out))
 }
+
 func gitPush() {
 	app := "git"
 	arg0 := "push"
