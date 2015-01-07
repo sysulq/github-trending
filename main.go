@@ -15,24 +15,20 @@ var push = flag.Bool("p", false, "push to github")
 func main() {
 	flag.Parse()
 
-	for {
-		dateString := dateString()
-		markdown := dateString + ".md"
-		html := dateString + ".html"
+	dateString := dateString()
+	markdown := dateString + ".md"
+	html := dateString + ".html"
 
-		createFile(markdown)
-		createFile(html)
+	createFile(markdown)
+	createFile(html)
 
-		mostStarred(markdown, html, 10)
+	mostStarred(markdown, html, 10)
 
-		if *push {
-			gitPull()
-			gitAddAll()
-			gitCommit(dateString)
-			gitPush()
-		}
-
-		time.Sleep(time.Duration(24) * time.Hour)
+	if *push {
+		gitPull()
+		gitAddAll()
+		gitCommit(dateString)
+		gitPush()
 	}
 }
 
