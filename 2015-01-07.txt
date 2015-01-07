@@ -29,15 +29,3 @@ dropbox/godropbox: Go, 231 stars today
 Zhouzi/TheaterJS: JavaScript, 217 stars today
       Typing effect mimicking human behavior.
     
-wasabeef/awesome-android-ui: 180 stars today
-      A curated list of awesome Android UI/UX libraries
-    
-lukasz-madon/awesome-remote-job: 109 stars today
-      A curated list of awesome remote jobs and resources. Inspired by https://github.com/vinta/awesome-python
-    
-twitter/AnomalyDetection: R, 109 stars today
-      Anomaly Detection with R
-    
-nlohmann/json: C++, 103 stars today
-      JSON for Modern C++
-    

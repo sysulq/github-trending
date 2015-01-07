@@ -5,9 +5,6 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"os"
 	"os/exec"
-	"regexp"
-	"strconv"
-	_ "strconv"
 	"strings"
 	"time"
 )
@@ -22,13 +19,12 @@ func main() {
 		createFile(markdown)
 		createFile(txt)
 
-		mostStarred(markdown, txt, 100)
+		mostStarred(markdown, txt, 10)
 
-		gitPull()
+		//gitPull()
 		gitAddAll()
 		gitCommit(dateString)
 		gitPush()
-
 		time.Sleep(time.Duration(24) * time.Hour)
 	}
 }
@@ -60,7 +56,7 @@ func createFile(filename string) {
 	}()
 }
 
-func mostStarred(filename string, txt string, leaststars int) {
+func mostStarred(filename string, txt string, topnum int) {
 	var doc *goquery.Document
 	var e error
 
@@ -82,11 +78,13 @@ func mostStarred(filename string, txt string, leaststars int) {
 		panic(e.Error())
 	}
 
-	re, _ := regexp.Compile("(\\d+) stars")
-
 	doc.Find("li.repo-list-item").Each(func(i int, s *goquery.Selection) {
+		topnum--
+		if topnum < 0 {
+			return
+		}
+
 		title := s.Find("h3 a").Text()
-		owner := s.Find("span.prefix").Text()
 		description := s.Find("p.repo-list-description").Text()
 		url, _ := s.Find("h3 a").Attr("href")
 		url = "https://github.com" + url
@@ -112,31 +110,7 @@ func mostStarred(filename string, txt string, leaststars int) {
 
 		for i := 0; i < len(info); i++ {
 			info[i] = strings.TrimSpace(info[i])
-			text := re.FindSubmatch([]byte(info[i]))
-			if text == nil {
-				continue
-			}
-
-			for i, _ := range re.SubexpNames() {
-				if i != 0 {
-					stars, err := strconv.Atoi(string(text[i]))
-					if err != nil {
-						fmt.Println(err)
-						return
-					}
-					fmt.Println(stars)
-					if stars < leaststars {
-						return
-					}
-				}
-			}
 		}
-
-		fmt.Println("owner:", owner)
-		fmt.Println("URL:", url)
-		fmt.Println("Meta:", meta)
-		fmt.Println("Contributors:", contributors)
-		fmt.Println("Info:", strings.Join(info, ", "))
 
 		mdcontent := "* [" + title + "](" + url + "): "
 		mdcontent += strings.Join(info, ", ") + " "
