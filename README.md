@@ -1,4 +1,4 @@
-github-trending-with-wxmp
+Top-10-github-trending
 =========================
 
 本来想做一个自动推送github trending的微信公众平台。
